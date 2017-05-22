@@ -172,254 +172,70 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
+<p>This is my first <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. Please excuse the mess.</p>
 <p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
 <p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
 <div id="when-you-save-the-notebook-an-html-file-containing-the-code-and-output-will-be-saved-alongside-it-click-the-preview-button-or-press-ctrlshiftk-to-preview-the-html-file." class="section level2">
 <h2>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</h2>
-<p>library(readr) library(dplyr) library(ggplot2) library(knitr) library(stringr) library(DT)</p>
-<p>setwd(‘C:/Users/jfalter/Dropbox/Data Science/GitHub/Instacart/’)</p>
-<p>orders &lt;- read_csv(‘./orders/orders.csv’) products &lt;- read_csv(‘./products.csv/products.csv’) order_products &lt;- read_csv(’../input/order_products__train.csv’) order_products_prior &lt;- read_csv(’../input/order_products__prior.csv’) aisles &lt;- read_csv(‘../input/aisles.csv’) departments &lt;- read_csv(‘../input/departments.csv’)</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShyZWFkcilcbmxpYnJhcnkoZHBseXIpXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KGtuaXRyKVxubGlicmFyeShzdHJpbmdyKVxubGlicmFyeShEVClcbmxpYnJhcnkoc3FsZGYpXG5cbnNldHdkKCdDOi9Vc2Vycy9qZmFsdGVyL0Ryb3Bib3gvRGF0YSBTY2llbmNlL0dpdEh1Yi9JbnN0YWNhcnQvJylcblxub3JkZXJzIDwtIHJlYWRfY3N2KCcuL29yZGVycy9vcmRlcnMuY3N2JylcbnByb2R1Y3RzIDwtIHJlYWRfY3N2KCcuL3Byb2R1Y3RzLmNzdi9wcm9kdWN0cy5jc3YnKVxub3JkZXJfcHJvZHVjdHMgPC0gcmVhZF9jc3YoJy4vb3JkZXJfcHJvZHVjdHNfX3RyYWluLmNzdi9vcmRlcl9wcm9kdWN0c19fdHJhaW4uY3N2Jylcbm9yZGVyX3Byb2R1Y3RzX3ByaW9yIDwtIHJlYWRfY3N2KCcuL29yZGVyX3Byb2R1Y3RzX19wcmlvci5jc3Yvb3JkZXJfcHJvZHVjdHNfX3ByaW9yLmNzdicpXG5haXNsZXMgPC0gcmVhZF9jc3YoJy4vYWlzbGVzLmNzdi9haXNsZXMuY3N2JylcbmRlcGFydG1lbnRzIDwtIHJlYWRfY3N2KCcuL2RlcGFydG1lbnRzLmNzdi9kZXBhcnRtZW50cy5jc3YnKVxuYGBgIn0= -->
+<pre class="r"><code>library(readr)
+library(dplyr)
+library(ggplot2)
+library(knitr)
+library(stringr)
+library(DT)
+library(sqldf)
+
+setwd('C:/Users/jfalter/Dropbox/Data Science/GitHub/Instacart/')
+
+orders &lt;- read_csv('./orders/orders.csv')
+products &lt;- read_csv('./products.csv/products.csv')
+order_products &lt;- read_csv('./order_products__train.csv/order_products__train.csv')
+order_products_prior &lt;- read_csv('./order_products__prior.csv/order_products__prior.csv')
+aisles &lt;- read_csv('./aisles.csv/aisles.csv')
+departments &lt;- read_csv('./departments.csv/departments.csv')</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Now I’m going to convert these to dataframes so that I can query them with SQL. This is because I like SQL and want to practice it more.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>So let’s first see which products get reordered the most</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6MTAwfSwicmRmIjoiSDRzSUFBQUFBQUFBQmwyVFdZaGJaUlRIZjVQY2U5dEVwNDBkYlVmY1dndHExWWwyVWJTaXRsQVhXcWs0T2pJKzZCQ1R6SmlaekUyYVNUcWlncTExUjNHcFdtc1JIOXh3NlVJRnF4VVhxajY1UHdpSzR2S2crRkRGQnhFUnJmNlNTVkFTK09WKzk3dm5uTy84enpuZjRKcmhaZW5oTkpBZ21VeVFTTG9NRXY3MUVKQnFQbStFWkYvTEFIcWxBTGtqWWJuN2d3L0IwQU93L3pGNHJlVFRRS3VmaE1rTFlEUUg1ZmRoK3dUcy9nU3UyYWJmN2JCeEgvU2RBMDhaYjljdzdOSG5pTDloL20vdzdOR3did3NzdWhqaTArRUZ2OS84QTZ6ZEFOTitPMm90dkhNbGJKMERWMVZodzdsUStoakdEc0psSDdyK0RzNDhDNjR6dDc3UFlZZm5QLzBOSERELyt5cncxc213OENkNDZYWFllUWxjZEp2dlErWVZ3Ukp6dUZxNzRvbHd4M29ZVU9yUVhyaDdPOXp6S0N5dUcrOFB1SFFSYk40RkQzNEFVMmZBeEdhMUxZRVRmbEdEdHRjVzRkVjFPcjhIZDU0TjUrMkg5US9EK0tkd2tqbFVYNFJNelhxZG9vYVAxTHNTdHJ3TDI0eTdlbHE5ODJCdUF6YVpaN1lIK3JVYnQ5N0hHN2RuRDZ4N1JGdHJFS3RsWmQ2YWpQM1hsMVU3WWNVeTY3ZkRmSXpWUHdnTG5wREZNRTh0R1d1ZnVWZlUxMnNQRGo4ZzgrR3c3K1Z0c1hicDUyVlVSaUJsVDFMV043VmIxSmE2Ulc2U2ZnbGc5cS95c3R3dlY4Z0tXUUN6SHBkeFdTNm55akVRL1N6MkovcEMzaFRyRXBsdnRGV2NvZWd1c1IrUnRZbWNtY2plUjVmTGhYSWNoRC9LdC9LMTJOdlFmb2ZXT0x4VnJHdW8xbkNOTEpYVFpLRWNLN01kNkwvRXM0TXZ4WmtJbnBObnhGa05yRlZnRHNGR1dTWG5pem9DQnlBd1RtQ2N3QmtObkpIQTI1SDhVMzZYZzIyK2tzL0VmSkp2aUxxU3I4amVyb3NVeHJuSjRwU0xUT3N5eld5bXE3VktvWkd2ajVRSzdaMU1ickxTaU9zanRXS2xWaWpXaW9XdU1LbGFaVHJiQ2RYc2UySVRyViszWVpndjU2WTY1M1UyMDRWY1BaY2RyZW52MjZFdWwxbVZhcjFVaVhWS05HOTgyT1hjVSt2YW1OdUltNWtVQnZJM05PS0pnYVhOQTFxZlozNjk3WFhoZit2RXpKR0pmOXFod25hb3FCaVBsZUppSi9keTd2cGl1ZjB5UjhVdHdkbHFyUlRYTzByY25jcldLL1ZjeHk2ZHI1UTdPeTF0SFBvWCtEK2lTTjhFQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["product_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["amount_reordered"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"24852","2":"16557"},{"1":"13176","2":"13362"},{"1":"21137","2":"8603"},{"1":"21903","2":"8055"},{"1":"47766","2":"6226"},{"1":"47209","2":"6042"},{"1":"47626","2":"5923"},{"1":"16797","2":"4786"},{"1":"27966","2":"4279"},{"1":"26209","2":"4234"},{"1":"27845","2":"4174"},{"1":"39275","2":"3384"},{"1":"45007","2":"3266"},{"1":"22935","2":"3094"},{"1":"24964","2":"3041"},{"1":"30391","2":"3007"},{"1":"4920","2":"2869"},{"1":"40706","2":"2727"},{"1":"44632","2":"2662"},{"1":"45066","2":"2655"},{"1":"4605","2":"2548"},{"1":"5876","2":"2510"},{"1":"42265","2":"2479"},{"1":"46979","2":"2457"},{"1":"8518","2":"2428"},{"1":"28204","2":"2426"},{"1":"43352","2":"2328"},{"1":"31717","2":"2308"},{"1":"19057","2":"2288"},{"1":"30489","2":"2220"},{"1":"5450","2":"2189"},{"1":"49235","2":"2129"},{"1":"37646","2":"2100"},{"1":"21616","2":"2071"},{"1":"28985","2":"1944"},{"1":"27086","2":"1898"},{"1":"26604","2":"1843"},{"1":"19660","2":"1834"},{"1":"27104","2":"1819"},{"1":"12341","2":"1773"},{"1":"24184","2":"1760"},{"1":"5077","2":"1752"},{"1":"39877","2":"1725"},{"1":"41950","2":"1722"},{"1":"49683","2":"1709"},{"1":"35951","2":"1683"},{"1":"48679","2":"1679"},{"1":"8424","2":"1671"},{"1":"43961","2":"1666"},{"1":"44359","2":"1650"},{"1":"17794","2":"1643"},{"1":"8277","2":"1624"},{"1":"24838","2":"1615"},{"1":"10749","2":"1599"},{"1":"22035","2":"1565"},{"1":"25890","2":"1510"},{"1":"34126","2":"1503"},{"1":"11520","2":"1500"},{"1":"21938","2":"1493"},{"1":"34969","2":"1484"},{"1":"35221","2":"1476"},{"1":"9076","2":"1407"},{"1":"39928","2":"1391"},{"1":"18465","2":"1362"},{"1":"33198","2":"1348"},{"1":"37067","2":"1329"},{"1":"29487","2":"1323"},{"1":"27521","2":"1312"},{"1":"22825","2":"1308"},{"1":"8174","2":"1288"},{"1":"5785","2":"1276"},{"1":"23909","2":"1248"},{"1":"46667","2":"1241"},{"1":"196","2":"1221"},{"1":"34358","2":"1190"},{"1":"15290","2":"1188"},{"1":"20114","2":"1181"},{"1":"27344","2":"1179"},{"1":"9839","2":"1171"},{"1":"28842","2":"1142"},{"1":"4210","2":"1088"},{"1":"47144","2":"1085"},{"1":"21709","2":"1076"},{"1":"46906","2":"1069"},{"1":"33731","2":"1067"},{"1":"38689","2":"1056"},{"1":"16759","2":"1034"},{"1":"31506","2":"1030"},{"1":"3957","2":"1027"},{"1":"33000","2":"1018"},{"1":"11777","2":"1014"},{"1":"6184","2":"1004"},{"1":"27156","2":"1004"},{"1":"7781","2":"987"},{"1":"432","2":"977"},{"1":"19348","2":"972"},{"1":"38739","2":"955"},{"1":"28199","2":"954"},{"1":"14947","2":"947"},{"1":"5479","2":"946"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[100]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Now let’s join the products table to this and pull the names of the products as well.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MTAwfSwicmRmIjoiSDRzSUFBQUFBQUFBQm9WWFcyd2NWeG4rNHIyMGRtekhqUlBYcEpSTVducEoyN2hwV2lvb29uVFhpWjBtVHV4NjYxeVFJRHFaUGQ0OTl1ek05c3lNWFFja1dzcGRJQzZsTnlyRUF6Y0J2YW1WV2lpaXJRbzhjWDlBQW9HNFBJQjRLSWdIaEJDQ3dqY3plMlpuWjFmQzBaZmRQZjg1Ly8zL3ovbVhENTg1TkhKbUJNQVFDb1VoREJYNHRUakUvN2FoaU9IbzgxNmdNTWt2RVdXTXFBTmlGM0F6MTVjL0E2eDhDbmp4WWVCYmlwOWtWUGtDMExvZFdCV0E4d1Bnc1hYZzZaOENaeC9odVE4Q0d5OEFrMjhGdmtnaFQ1MEJudUdaUy80RFRQMGQrTW9iZ0JjZUFQYk5BZTROd05kSmYrOGZnV1AzQUp1azdUNEd2RklESGh3SDdtNEQ5N3dOVUQ4QkdxOEJDei9pOTk4REI5OEN2SWU2VGY0Q2VKenl2L1JiNEZYcS93a1BlT2thd1BvejhNMXZBMC9PQTBjK3dOOHIxS3NNN0tjT3A3aFBYZ0Y4NkNSd2dLYXVQQXQ4OURIZ1l3OEJWd2JrOTAvZzZEN2cvcWVBVC84UThHOEUxdStuYmZ1QnZYK2xEZHo3YmdrOGY1eUh2dzk4K0ZiZzdTOENKejhMclAwTXVKbzZ0TDhCVEdqNjYxcmE4R1BhZXh2d3dQZUFSOGkzc2tsN2R3STdRdUErNmptekRaam12alg2KzAza3UrMFo0UGpudUpjK2NHbkxiVFo5MHFDc2lUZ3VTY0RLVmVIeVgrZlhWRlUwTEcvVld0UU40U3JiU29oK2g3ckxMTmNDTFRiUFM2MlY3S05WeGZrdHE5WldyckNiSGRvT1E2dHNlTGFvZS9ralI0WHY1MmpiRjRSdVNHdEJ0ankzc3pRNlFPcWtZYkVzL0hZdnFiU2dXdW1QbldiZjZhYm5TT3VFY3RiekhLcE9LSHM1VEJqU3UwTGJiaXBYNWZVK0t4M0gyN1FXWFpVcU9XNW84MEk3eXM1em1nM3RzRVVwUm5oTnlyb2phZjJ5ckZ2eldyUlQ0Vk1wbzJqVnV0dHJpY0JMcVh0cWJhSFhIZVUyck5NaWtEclp0YXBERlJpUlJ6MVhidGxhK1cycjBtNDdzck0rbGxYYXNCc3p3ckwrN28zb3JORGFDOHlCNFlwUEJVUWpOQXVYcElHZ0lWbUhwSjZmQzlkVWp5YmIrMlBXOVpOeWhCdG9rdzF2VHZXTHMrTEl2Y3dFYTA2NDlsWS9XeWFiYWpEN0hPdG8yR3FsQ3U2c3RZVGpERXExeVc0YU9xdlcxZkZIbmpRdkhKRklHWnp2RlIwMlFzZFUwZTRUaXZsQ2NscEh4MFhYN0g0eFhWNk9zTmQ3WFRKYWErczB6TWJaYzFyNlRZWWtkTlFxZzVrU3hyTG0rYW1mR1pJbDJXNUxuU2JYVFFjUFh0V3BoZE5OS1FLcnFxVXdMV0ZQSnZWY2w4WGNVa0d6eDhkcGNpWnBhYzA2b2Q5VmI5eGt1WFZjNmZOYm5kVzk1c3lLNjI5S0dVaVhhbFVjNWxzOVc0LzdNZ1hreXNDcVJYdXRKUytJNUZ4N1ZyVDJHeWxWN2RtMjV5aHJWbnViYnY3NGtwUU9CU1EyRHNqZzFNZ2tMNnFoYTlPalBLT053aGYxSHBpT0hXQmx5cXJEd2ZpazM2NVcxNnhMcy9WUlpRbDJJdEloWDliYm45anBvcGpQTnFYMGpjLzNWU2s1N2hXMWRlWEdYMmFieWw2WGJodzhQMVgwY3NQcnprQTRpa200SkxUdnlLM0VScFBaU1NWVm5GV21rdTFaUnhxTnRKVG50WXlZOWltNUk5TDlsSEpOTnpMWkd6VmFLOWVRVE83MWQ5WFJ0Q2JVcHVtbzEyY3lyazZ0TENhNFpFOTNveXNnVnJRYXhUaXI1ZDZ1d0pNaUNEWHIvUVJWaXo2ekNveDN5elJ6elcxZnBnRzlWbGpkRm1PemUwVEpkbGk1bmk5Q3ZUOWJ2cnZOdnNQWFZOdzFMNlNMaE81ckNpZkZoblRJTXJJZ0gySjZNYlRweVRtVzNhR3JldTRpL3N4U0IxMVQ4N1NZbGJYc2VhYlRGMnRlM1JoVzdybDJkaVlLREFqbHhERTJ0TFowdlZ4ajJMWGkycUdPN2lMU2hGWGpycFlKVXRxY1RlR1o5VGl2ZUNiWHRFZjY3dHFaYklta2JiclRBNWpFOG9JYzBCRjJkeU1kWDA4OThkMlRYSStubXlxUU55YUphKzVVazdYY0VVUWRVR2krQjRScEZOT0R3cEdSbW9ZeTZRSTl4VE9WWEVDbmxLWUYxcUtqTnFTMXFKeWU1cm9zTnExWnovYmNNT2p0M1V2MHIzVW5HMGlUUElPZ3Q3cjZyOFR0czQ1c1NUZGdidmM5ZXVMcmd0RVY2VVYrZS9lRnh0YmdXd3U4NlU5NHlnOGlvZlJBRURXUEZwY3VYQkNhV1NFR3Q1cFQ1QkVSLzE5b3hpS254YldhV1J3ZGNNZE9aS3k0Z2JYWU1GNk92VEc0ZCt3MS9hdEw3cTN3ZE1DNDQwbmdsa1BVKzNHZTRxTjRlcGtOOS9QRWxhd0JQc29uT0VSTWZKemdRMzJNdzhUb3E4UVVmZnNING1XQ1E4REkxNGhWNGh4Zk54d3VoamtvREQ5TjhKRSsvRDdpQWpGTkZJR0wvMFk4UVh5U3VJdTRoYmlVTjhhanhCcHhNM0VkY1JrcjhpOEVCNDN5TDRudkVuemdsNmx2K1VHQ3cxRDVJd1FIaXpMdEtYUDRLWE9JS1M4Uzd5UXU1elAyVDhUdmlOOFFIRkpLSEZ4S0hCWks3eWM0SUpSb2Era3djUk54UFdFUmJ5UXVabWY0TjBIWnhWOFJIRzZLWHlXK1RIRG9LdEpYUmVwUTNDRHVJTjVCMEk0aUo1a2krUlRKcDhoaHE4aGhwOGhocnZBdjRoL0VheDM4bXZnNVFYMEszeUZvVitFNTR0bmNSRmh5UmZRT1Q2YU9ndWtOYmUyeDdJSnp5anc2UnMxS3ROMlVSQkE5NGM5cDZlbTZaRmZLY1I3bW5UQmp1RWVwTUhRZjRyLzh4cEx0TUNVN0twakZrYm9JeE15cWpzUUJyK2VPWE9TMWcvaUJqS0ZvbWkzbERtL1R1WVVkb1J0cFVqOWdOME4zL2NDdGtZQ1luUHlOZGI3WE05OExpY2loLzNaWWxVd1BseTdiaXZGQnlSSG5wV2t0NDlFdEdCazhFejBLelFVd3dsVi9KdUFUeWV3YllYczJLN0Z0ZVAxL3QwbVppN3NQQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["product_id"],"name":[1],"type":["int"],"align":["right"]},{"label":["product_name"],"name":[2],"type":["chr"],"align":["left"]},{"label":["times_reordered"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"24852","2":"Banana","3":"16557"},{"1":"13176","2":"Bag of Organic Bananas","3":"13362"},{"1":"21137","2":"Organic Strawberries","3":"8603"},{"1":"21903","2":"Organic Baby Spinach","3":"8055"},{"1":"47766","2":"Organic Avocado","3":"6226"},{"1":"47209","2":"Organic Hass Avocado","3":"6042"},{"1":"47626","2":"Large Lemon","3":"5923"},{"1":"16797","2":"Strawberries","3":"4786"},{"1":"27966","2":"Organic Raspberries","3":"4279"},{"1":"26209","2":"Limes","3":"4234"},{"1":"27845","2":"Organic Whole Milk","3":"4174"},{"1":"39275","2":"Organic Blueberries","3":"3384"},{"1":"45007","2":"Organic Zucchini","3":"3266"},{"1":"22935","2":"Organic Yellow Onion","3":"3094"},{"1":"24964","2":"Organic Garlic","3":"3041"},{"1":"30391","2":"Organic Cucumber","3":"3007"},{"1":"4920","2":"Seedless Red Grapes","3":"2869"},{"1":"40706","2":"Organic Grape Tomatoes","3":"2727"},{"1":"44632","2":"Sparkling Water Grapefruit","3":"2662"},{"1":"45066","2":"Honeycrisp Apple","3":"2655"},{"1":"4605","2":"Yellow Onions","3":"2548"},{"1":"5876","2":"Organic Lemon","3":"2510"},{"1":"42265","2":"Organic Baby Carrots","3":"2479"},{"1":"46979","2":"Asparagus","3":"2457"},{"1":"8518","2":"Organic Red Onion","3":"2428"},{"1":"28204","2":"Organic Fuji Apple","3":"2426"},{"1":"43352","2":"Raspberries","3":"2328"},{"1":"31717","2":"Organic Cilantro","3":"2308"},{"1":"19057","2":"Organic Large Extra Fancy Fuji Apple","3":"2288"},{"1":"30489","2":"Original Hummus","3":"2220"},{"1":"5450","2":"Small Hass Avocado","3":"2189"},{"1":"49235","2":"Organic Half & Half","3":"2129"},{"1":"37646","2":"Organic Gala Apples","3":"2100"},{"1":"21616","2":"Organic Baby Arugula","3":"2071"},{"1":"28985","2":"Michigan Organic Kale","3":"1944"},{"1":"27086","2":"Half & Half","3":"1898"},{"1":"26604","2":"Organic Blackberries","3":"1843"},{"1":"19660","2":"Spring Water","3":"1834"},{"1":"27104","2":"Fresh Cauliflower","3":"1819"},{"1":"12341","2":"Hass Avocados","3":"1773"},{"1":"24184","2":"Red Peppers","3":"1760"},{"1":"5077","2":"100% Whole Wheat Bread","3":"1752"},{"1":"39877","2":"Organic Granny Smith Apple","3":"1725"},{"1":"41950","2":"Organic Tomato Cluster","3":"1722"},{"1":"49683","2":"Cucumber Kirby","3":"1709"},{"1":"35951","2":"Organic Unsweetened Almond Milk","3":"1683"},{"1":"48679","2":"Organic Garnet Sweet Potato (Yam)","3":"1679"},{"1":"8424","2":"Broccoli Crown","3":"1671"},{"1":"43961","2":"Organic Peeled Whole Baby Carrots","3":"1666"},{"1":"44359","2":"Organic Small Bunch Celery","3":"1650"},{"1":"17794","2":"Carrots","3":"1643"},{"1":"8277","2":"Apple Honeycrisp Organic","3":"1624"},{"1":"24838","2":"Unsweetened Almondmilk","3":"1615"},{"1":"10749","2":"Organic Red Bell Pepper","3":"1599"},{"1":"22035","2":"Organic Whole String Cheese","3":"1565"},{"1":"25890","2":"Boneless Skinless Chicken Breasts","3":"1510"},{"1":"34126","2":"Organic Italian Parsley Bunch","3":"1503"},{"1":"11520","2":"Large Alfresco Eggs","3":"1500"},{"1":"21938","2":"Green Bell Pepper","3":"1493"},{"1":"34969","2":"Red Vine Tomato","3":"1484"},{"1":"35221","2":"Lime Sparkling Water","3":"1476"},{"1":"9076","2":"Blueberries","3":"1407"},{"1":"39928","2":"Organic Kiwi","3":"1391"},{"1":"18465","2":"Organic Grade A Free Range Large Brown Eggs","3":"1362"},{"1":"33198","2":"Sparkling Natural Mineral Water","3":"1348"},{"1":"37067","2":"Organic Banana","3":"1329"},{"1":"29487","2":"Roma Tomato","3":"1323"},{"1":"27521","2":"Organic Lacinato (Dinosaur) Kale","3":"1312"},{"1":"22825","2":"Organic D'Anjou Pears","3":"1308"},{"1":"8174","2":"Organic Navel Orange","3":"1288"},{"1":"5785","2":"Organic Reduced Fat 2% Milk","3":"1276"},{"1":"23909","2":"2% Reduced Fat Milk","3":"1248"},{"1":"46667","2":"Organic Ginger Root","3":"1241"},{"1":"196","2":"Soda","3":"1221"},{"1":"34358","2":"Garlic","3":"1190"},{"1":"15290","2":"Orange Bell Pepper","3":"1188"},{"1":"20114","2":"Jalapeno Peppers","3":"1181"},{"1":"27344","2":"Uncured Genoa Salami","3":"1179"},{"1":"9839","2":"Organic Broccoli","3":"1171"},{"1":"28842","2":"Bunched Cilantro","3":"1142"},{"1":"4210","2":"Whole Milk","3":"1088"},{"1":"47144","2":"Unsweetened Original Almond Breeze Almond Milk","3":"1085"},{"1":"21709","2":"Sparkling Lemon Water","3":"1076"},{"1":"46906","2":"Grape White/Green Seedless","3":"1069"},{"1":"33731","2":"Grated Parmesan","3":"1067"},{"1":"38689","2":"Organic Reduced Fat Milk","3":"1056"},{"1":"16759","2":"Organic Carrot Bunch","3":"1034"},{"1":"31506","2":"Extra Virgin Olive Oil","3":"1030"},{"1":"3957","2":"100% Raw Coconut Water","3":"1027"},{"1":"33000","2":"Pure Irish Butter","3":"1018"},{"1":"11777","2":"Red Raspberries","3":"1014"},{"1":"6184","2":"Clementines","3":"1004"},{"1":"27156","2":"Organic Black Beans","3":"1004"},{"1":"7781","2":"Organic Sticks Low Moisture Part Skim Mozzarella String Cheese","3":"987"},{"1":"432","2":"Vanilla Almond Breeze Almond Milk","3":"977"},{"1":"19348","2":"Fat Free Milk","3":"972"},{"1":"38739","2":"Hass Avocado","3":"955"},{"1":"28199","2":"Clementines, Bag","3":"954"},{"1":"14947","2":"Pure Sparkling Water","3":"947"},{"1":"5479","2":"Italian Sparkling Mineral Water","3":"946"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[100]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua2FibGUoaGVhZChvcmRlcnMsMTIpKVxuYGBgIn0= -->
 <pre class="r"><code>kable(head(orders,12))</code></pre>
 <!-- rnb-source-end -->
-
-<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
-
-<table style="width:100%;">
-<colgroup>
-<col width="10%" />
-<col width="9%" />
-<col width="10%" />
-<col width="14%" />
-<col width="11%" />
-<col width="19%" />
-<col width="24%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="right">order_id</th>
-<th align="right">user_id</th>
-<th align="left">eval_set</th>
-<th align="right">order_number</th>
-<th align="right">order_dow</th>
-<th align="right">order_hour_of_day</th>
-<th align="right">days_since_prior_order</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">2539329</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">8</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td align="right">2398795</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">2</td>
-<td align="right">3</td>
-<td align="right">7</td>
-<td align="right">15</td>
-</tr>
-<tr class="odd">
-<td align="right">473747</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="right">12</td>
-<td align="right">21</td>
-</tr>
-<tr class="even">
-<td align="right">2254736</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">4</td>
-<td align="right">4</td>
-<td align="right">7</td>
-<td align="right">29</td>
-</tr>
-<tr class="odd">
-<td align="right">431534</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">5</td>
-<td align="right">4</td>
-<td align="right">15</td>
-<td align="right">28</td>
-</tr>
-<tr class="even">
-<td align="right">3367565</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">6</td>
-<td align="right">2</td>
-<td align="right">7</td>
-<td align="right">19</td>
-</tr>
-<tr class="odd">
-<td align="right">550135</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">7</td>
-<td align="right">1</td>
-<td align="right">9</td>
-<td align="right">20</td>
-</tr>
-<tr class="even">
-<td align="right">3108588</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">8</td>
-<td align="right">1</td>
-<td align="right">14</td>
-<td align="right">14</td>
-</tr>
-<tr class="odd">
-<td align="right">2295261</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">9</td>
-<td align="right">1</td>
-<td align="right">16</td>
-<td align="right">0</td>
-</tr>
-<tr class="even">
-<td align="right">2550362</td>
-<td align="right">1</td>
-<td align="left">prior</td>
-<td align="right">10</td>
-<td align="right">4</td>
-<td align="right">8</td>
-<td align="right">30</td>
-</tr>
-<tr class="odd">
-<td align="right">1187899</td>
-<td align="right">1</td>
-<td align="left">train</td>
-<td align="right">11</td>
-<td align="right">4</td>
-<td align="right">8</td>
-<td align="right">14</td>
-</tr>
-<tr class="even">
-<td align="right">2168274</td>
-<td align="right">2</td>
-<td align="left">prior</td>
-<td align="right">1</td>
-<td align="right">2</td>
-<td align="right">11</td>
-<td align="right">NA</td>
-</tr>
-</tbody>
-</table>
-
-
-<!-- rnb-html-end -->
-
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxua2FibGUoaGVhZChwcm9kdWN0cywxMikpXG5gYGAifQ== -->
 <pre class="r"><code>kable(head(products,12))</code></pre>
 <!-- rnb-source-end -->
-
-<!-- rnb-html-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImtuaXRfYXNpcyJdLCJzaXppbmdQb2xpY3kiOltdfX0= -->
-
-<table>
-<thead>
-<tr class="header">
-<th align="right">product_id</th>
-<th align="left">product_name</th>
-<th align="right">aisle_id</th>
-<th align="right">department_id</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">1</td>
-<td align="left">Chocolate Sandwich Cookies</td>
-<td align="right">61</td>
-<td align="right">19</td>
-</tr>
-<tr class="even">
-<td align="right">2</td>
-<td align="left">All-Seasons Salt</td>
-<td align="right">104</td>
-<td align="right">13</td>
-</tr>
-<tr class="odd">
-<td align="right">3</td>
-<td align="left">Robust Golden Unsweetened Oolong Tea</td>
-<td align="right">94</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
-<td align="right">4</td>
-<td align="left">Smart Ones Classic Favorites Mini Rigatoni With Vodka Cream Sauce</td>
-<td align="right">38</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="right">5</td>
-<td align="left">Green Chile Anytime Sauce</td>
-<td align="right">5</td>
-<td align="right">13</td>
-</tr>
-<tr class="even">
-<td align="right">6</td>
-<td align="left">Dry Nose Oil</td>
-<td align="right">11</td>
-<td align="right">11</td>
-</tr>
-<tr class="odd">
-<td align="right">7</td>
-<td align="left">Pure Coconut Water With Orange</td>
-<td align="right">98</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
-<td align="right">8</td>
-<td align="left">Cut Russet Potatoes Steam N' Mash</td>
-<td align="right">116</td>
-<td align="right">1</td>
-</tr>
-<tr class="odd">
-<td align="right">9</td>
-<td align="left">Light Strawberry Blueberry Yogurt</td>
-<td align="right">120</td>
-<td align="right">16</td>
-</tr>
-<tr class="even">
-<td align="right">10</td>
-<td align="left">Sparkling Orange Juice &amp; Prickly Pear Beverage</td>
-<td align="right">115</td>
-<td align="right">7</td>
-</tr>
-<tr class="odd">
-<td align="right">11</td>
-<td align="left">Peach Mango Juice</td>
-<td align="right">31</td>
-<td align="right">7</td>
-</tr>
-<tr class="even">
-<td align="right">12</td>
-<td align="left">Chocolate Fudge Layer Cake</td>
-<td align="right">119</td>
-<td align="right">1</td>
-</tr>
-</tbody>
-</table>
-
-
-<!-- rnb-html-end -->
-
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -427,22 +243,22 @@ $(document).ready(function () {
 <h1>Counts of Order Hour of Day</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3JkZXJzIDwtIG9yZGVycyAlPiUgbXV0YXRlKG9yZGVyX2hvdXJfb2ZfZGF5ID0gYXMubnVtZXJpYyhvcmRlcl9ob3VyX29mX2RheSksIGV2YWxfc2V0ID0gYXMuZmFjdG9yKGV2YWxfc2V0KSlcbm9yZGVycyAlPiUgXG4gIGdncGxvdChhZXMoeD1vcmRlcl9ob3VyX29mX2RheSkpICsgXG4gIGdlb21faGlzdG9ncmFtKHN0YXQ9XCJjb3VudFwiLGZpbGw9XCJyZWRcIilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxub3JkZXJzIDwtIG9yZGVycyAlPiUgbXV0YXRlKG9yZGVyX2hvdXJfb2ZfZGF5ID0gYXMubnVtZXJpYyhvcmRlcl9ob3VyX29mX2RheSksIGV2YWxfc2V0ID0gYXMuZmFjdG9yKGV2YWxfc2V0KSlcblxub3JkZXJzICU+JSBcbiAgZ2dwbG90KGFlcyh4PW9yZGVyX2hvdXJfb2ZfZGF5KSkgKyBcbiAgZ2VvbV9oaXN0b2dyYW1cbmBgYCJ9 -->
 <pre class="r"><code>orders &lt;- orders %&gt;% mutate(order_hour_of_day = as.numeric(order_hour_of_day), eval_set = as.factor(eval_set))
+
 orders %&gt;% 
   ggplot(aes(x=order_hour_of_day)) + 
-  geom_histogram(stat=&quot;count&quot;,fill=&quot;red&quot;)</code></pre>
+  geom_histogram</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiSWdub3JpbmcgdW5rbm93biBwYXJhbWV0ZXJzOiBiaW53aWR0aCwgYmlucywgcGFkXG4ifQ== -->
-<pre><code>Ignoring unknown parameters: binwidth, bins, pad</code></pre>
-<!-- rnb-output-end -->
-<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0IjozOTcuNDA0Miwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjY0M30= -->
-<p><img src="data:image/png;base64,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" /></p>
-<!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="most-reordered-items" class="section level1">
+<h1>Most reordered items</h1>
+<!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiANCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KQWRkIGEgbmV3IGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqSW5zZXJ0IENodW5rKiBidXR0b24gb24gdGhlIHRvb2xiYXIgb3IgYnkgcHJlc3NpbmcgKkN0cmwrQWx0K0kqLg0KDQpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4NCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCg0KbGlicmFyeShyZWFkcikNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KGdncGxvdDIpDQpsaWJyYXJ5KGtuaXRyKQ0KbGlicmFyeShzdHJpbmdyKQ0KbGlicmFyeShEVCkNCg0Kc2V0d2QoJ0M6L1VzZXJzL2pmYWx0ZXIvRHJvcGJveC9EYXRhIFNjaWVuY2UvR2l0SHViL0luc3RhY2FydC8nKQ0KDQpvcmRlcnMgPC0gcmVhZF9jc3YoJy4vb3JkZXJzL29yZGVycy5jc3YnKQ0KcHJvZHVjdHMgPC0gcmVhZF9jc3YoJy4vcHJvZHVjdHMuY3N2L3Byb2R1Y3RzLmNzdicpDQpvcmRlcl9wcm9kdWN0cyA8LSByZWFkX2NzdignLi4vaW5wdXQvb3JkZXJfcHJvZHVjdHNfX3RyYWluLmNzdicpDQpvcmRlcl9wcm9kdWN0c19wcmlvciA8LSByZWFkX2NzdignLi4vaW5wdXQvb3JkZXJfcHJvZHVjdHNfX3ByaW9yLmNzdicpDQphaXNsZXMgPC0gcmVhZF9jc3YoJy4uL2lucHV0L2Fpc2xlcy5jc3YnKQ0KZGVwYXJ0bWVudHMgPC0gcmVhZF9jc3YoJy4uL2lucHV0L2RlcGFydG1lbnRzLmNzdicpDQoNCmBgYHtyfQ0Ka2FibGUoaGVhZChvcmRlcnMsMTIpKQ0KYGBgDQpgYGB7cn0NCmthYmxlKGhlYWQocHJvZHVjdHMsMTIpKQ0KYGBgDQoNCiNDb3VudHMgb2YgT3JkZXIgSG91ciBvZiBEYXkNCmBgYHtyfQ0Kb3JkZXJzIDwtIG9yZGVycyAlPiUgbXV0YXRlKG9yZGVyX2hvdXJfb2ZfZGF5ID0gYXMubnVtZXJpYyhvcmRlcl9ob3VyX29mX2RheSksIGV2YWxfc2V0ID0gYXMuZmFjdG9yKGV2YWxfc2V0KSkNCg0Kb3JkZXJzICU+JSANCiAgZ2dwbG90KGFlcyh4PW9yZGVyX2hvdXJfb2ZfZGF5KSkgKyANCiAgZ2VvbV9oaXN0b2dyYW0oc3RhdD0iY291bnQiLGZpbGw9InJlZCIpDQpgYGA=</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpUaGlzIGlzIG15IGZpcnN0IFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gUGxlYXNlIGV4Y3VzZSB0aGUgbWVzcy4NCg0KVHJ5IGV4ZWN1dGluZyB0aGlzIGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqUnVuKiBidXR0b24gd2l0aGluIHRoZSBjaHVuayBvciBieSBwbGFjaW5nIHlvdXIgY3Vyc29yIGluc2lkZSBpdCBhbmQgcHJlc3NpbmcgKkN0cmwrU2hpZnQrRW50ZXIqLiANCg0KQWRkIGEgbmV3IGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqSW5zZXJ0IENodW5rKiBidXR0b24gb24gdGhlIHRvb2xiYXIgb3IgYnkgcHJlc3NpbmcgKkN0cmwrQWx0K0kqLg0KDQpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4NCi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCmBgYHtyfQ0KbGlicmFyeShyZWFkcikNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KGdncGxvdDIpDQpsaWJyYXJ5KGtuaXRyKQ0KbGlicmFyeShzdHJpbmdyKQ0KbGlicmFyeShEVCkNCmxpYnJhcnkoc3FsZGYpDQoNCnNldHdkKCdDOi9Vc2Vycy9qZmFsdGVyL0Ryb3Bib3gvRGF0YSBTY2llbmNlL0dpdEh1Yi9JbnN0YWNhcnQvJykNCg0Kb3JkZXJzIDwtIHJlYWRfY3N2KCcuL29yZGVycy9vcmRlcnMuY3N2JykNCnByb2R1Y3RzIDwtIHJlYWRfY3N2KCcuL3Byb2R1Y3RzLmNzdi9wcm9kdWN0cy5jc3YnKQ0Kb3JkZXJfcHJvZHVjdHMgPC0gcmVhZF9jc3YoJy4vb3JkZXJfcHJvZHVjdHNfX3RyYWluLmNzdi9vcmRlcl9wcm9kdWN0c19fdHJhaW4uY3N2JykNCm9yZGVyX3Byb2R1Y3RzX3ByaW9yIDwtIHJlYWRfY3N2KCcuL29yZGVyX3Byb2R1Y3RzX19wcmlvci5jc3Yvb3JkZXJfcHJvZHVjdHNfX3ByaW9yLmNzdicpDQphaXNsZXMgPC0gcmVhZF9jc3YoJy4vYWlzbGVzLmNzdi9haXNsZXMuY3N2JykNCmRlcGFydG1lbnRzIDwtIHJlYWRfY3N2KCcuL2RlcGFydG1lbnRzLmNzdi9kZXBhcnRtZW50cy5jc3YnKQ0KYGBgDQpOb3cgSSdtIGdvaW5nIHRvIGNvbnZlcnQgdGhlc2UgdG8gZGF0YWZyYW1lcyBzbyB0aGF0IEkgY2FuIHF1ZXJ5IHRoZW0gd2l0aCBTUUwuIFRoaXMgaXMgYmVjYXVzZSBJIGxpa2UgU1FMIGFuZCB3YW50IHRvIHByYWN0aWNlIGl0IG1vcmUuDQpgYGB7cn0NCm9yZGVyczwtZGF0YS5mcmFtZShvcmRlcnMpDQpwcm9kdWN0czwtZGF0YS5mcmFtZShwcm9kdWN0cykNCm9yZGVyX3Byb2R1Y3RzPC1kYXRhLmZyYW1lKG9yZGVyX3Byb2R1Y3RzKQ0Kb3JkZXJfcHJvZHVjdHNfcHJpb3I8LWRhdGEuZnJhbWUob3JkZXJfcHJvZHVjdHNfcHJpb3IpDQphaXNsZXM8LWRhdGEuZnJhbWUoYWlzbGVzKQ0KZGVwYXJ0bWVudHM8LWRhdGEuZnJhbWUoZGVwYXJ0bWVudHMpDQpgYGANClNvIGxldCdzIGZpcnN0IHNlZSB3aGljaCBwcm9kdWN0cyBnZXQgcmVvcmRlcmVkIHRoZSBtb3N0DQpgYGB7cn0NCnNxbGRmKCJTRUxFQ1QgcHJvZHVjdF9pZCwgU1VNKHJlb3JkZXJlZCkgYXMgYW1vdW50X3Jlb3JkZXJlZCBGUk9NIG9yZGVyX3Byb2R1Y3RzIEdST1VQIEJZIHByb2R1Y3RfaWQgT1JERVIgQlkgYW1vdW50X3Jlb3JkZXJlZCBkZXNjIExJTUlUIDEwMCIpDQpgYGANCk5vdyBsZXQncyBqb2luIHRoZSBwcm9kdWN0cyB0YWJsZSB0byB0aGlzIGFuZCBwdWxsIHRoZSBuYW1lcyBvZiB0aGUgcHJvZHVjdHMgYXMgd2VsbC4NCmBgYHtyfQ0Kc3FsZGYoIlNFTEVDVCBvcmRlcl9wcm9kdWN0cy5wcm9kdWN0X2lkLCBwcm9kdWN0cy5wcm9kdWN0X25hbWUsIFNVTShvcmRlcl9wcm9kdWN0cy5yZW9yZGVyZWQpIGFzIHRpbWVzX3Jlb3JkZXJlZCANCiAgICAgIEZST00gb3JkZXJfcHJvZHVjdHMgDQogICAgICBMRUZUIEpPSU4gcHJvZHVjdHMgDQogICAgICBPTiBvcmRlcl9wcm9kdWN0cy5wcm9kdWN0X2lkID0gcHJvZHVjdHMucHJvZHVjdF9pZCANCiAgICAgIEdST1VQIEJZIG9yZGVyX3Byb2R1Y3RzLnByb2R1Y3RfaWQgDQogICAgICBPUkRFUiBCWSB0aW1lc19yZW9yZGVyZWQgZGVzYyANCiAgICAgIExJTUlUIDEwMCIpDQpgYGANCmBgYHtyfQ0Ka2FibGUoaGVhZChvcmRlcnMsMTIpKQ0KYGBgDQpgYGB7cn0NCmthYmxlKGhlYWQocHJvZHVjdHMsMTIpKQ0KYGBgDQoNCiNDb3VudHMgb2YgT3JkZXIgSG91ciBvZiBEYXkNCmBgYHtyfQ0Kb3JkZXJzIDwtIG9yZGVycyAlPiUgbXV0YXRlKG9yZGVyX2hvdXJfb2ZfZGF5ID0gYXMubnVtZXJpYyhvcmRlcl9ob3VyX29mX2RheSksIGV2YWxfc2V0ID0gYXMuZmFjdG9yKGV2YWxfc2V0KSkNCg0Kb3JkZXJzICU+JSANCiAgZ2dwbG90KGFlcyh4PW9yZGVyX2hvdXJfb2ZfZGF5KSkgKyANCiAgZ2VvbV9oaXN0b2dyYW0NCmBgYA0KDQojTW9zdCByZW9yZGVyZWQgaXRlbXM=</div>
 
 
 
