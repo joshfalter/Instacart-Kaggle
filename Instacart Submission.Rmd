@@ -9,15 +9,22 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## Instacart Challenge
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+The goal is to predict which previously purchased products will be in a user's next order.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+# Repeat Last Order with only Reordered Products
 
-```{r cars}
-summary(cars)
-```
+Trying to recreate the last method located: [here](https://www.kaggle.com/frednavruzov/dumb-and-the-dumber-baselines-plb-0-3276826/notebook)
+
+#Steps
+1. Determine which customers need their orders predicted. Using the orders df, use order_id to find user_id for that order.
+2. Use order_number and user_id to look up order_number - 1 and get the order_id for it in the orders df.
+3. Use order_id to get product_ids of reordered items for each order.
+4. Build a df of order_id and product_ids of reordered items.
+5. Export to csv as submission
+
+
 
 ## Including Plots
 
